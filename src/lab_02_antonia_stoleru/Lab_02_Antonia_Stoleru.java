@@ -12,6 +12,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.image.*;
+import java.util.Random;
+
 
 /**
  *
@@ -31,11 +34,28 @@ public class Lab_02_Antonia_Stoleru extends Application {
        BorderPane root = new BorderPane();
        Scene sc = new Scene(root, 250, 300);
        stage.setTitle("Java Games");
-       stage.show();
-       StackPane middle = new StackPane();
-       Label lb1 = new Label("Random game");
-       Label lb2 = new Label("Waiting...");
+       
        Label lblImage = new Label("");
+       StackPane middle = new StackPane(lblImage);
+       Label top = new Label("Random game");
+       Label bottom = new Label("Waiting...");
+       
+       root.setTop(top);
+       root.setBottom(bottom);
+       root.setCenter(middle);
+       
+       Random r = new Random();
+       int rand = r.nextInt(20) + 101;
+       
+       String link = "file:images/" + rand + ".jpg";
+       
+       Image image = new Image(link);
+       
+       lblImage.setGraphic(new ImageView(image));
+       
+       stage.setScene(sc);
+       stage.show();
+       
        
     }
     
